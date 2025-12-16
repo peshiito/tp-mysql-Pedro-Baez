@@ -38,6 +38,7 @@ CREATE TABLE historial_clinico (
     id_mascota int not null,
     id_veterinario int not null,
     fecha_registro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    descripcion VARCHAR(250) NOT NULL,  -- ¡Falta esta línea!
     FOREIGN KEY (id_mascota) REFERENCES mascotas(id),
     FOREIGN KEY (id_veterinario) REFERENCES veterinarios(id)
 );
@@ -95,7 +96,60 @@ VALUES
 --     FOREIGN KEY (id_veterinario) REFERENCES veterinarios(id)
 -- );
 
-INSERT INTO historial_clinico (id_mascota, id_veterinario) 
-VALUES (1, 1), 
-       (2, 1),
-       (3, 2);
+INSERT INTO historial_clinico (id_mascota, id_veterinario, descripcion) 
+VALUES 
+    (1, 1, 'Control anual de vacunación'),
+    (2, 1, 'Chequeo por tos persistente'),
+    (3, 2, 'Cirugía de esterilización');
+
+--Ejercicio 7
+
+-- Ejercicio 7 – Actualizar registros 
+-- Realizar las siguientes actualizaciones: 
+-- 1.  Cambiar la dirección de un dueño (por ID o nombre).  
+-- 2.  Actualizar la especialidad de un veterinario (por ID o matrícula).  
+-- 3.  Editar la descripción de un historial clínico (por ID).
+
+
+-- CREATE TABLE duenos (
+-- 	id int AUTO_INCREMENT PRIMARY KEY,
+--     nombre varchar(50) not null,
+--     apellido varchar(50) not null,
+--     telefono varchar(20) not null,
+--     direccion varchar(100)
+
+-- );
+
+-- Update dueños
+
+update duenos 
+set direccion = "13 de diciembre 1820"
+where id = 1;
+
+
+-- Update veterinario
+
+
+-- INSERT INTO veterinarios (nombre, apellido, matricula, especialidad)
+-- VALUES 
+--     ('Lucas', 'Martinez', 123456 , "Gatologo" ),
+--     ('Natalia', 'Bargas', 1234567, "Perrologo"),
+--     ('GUGU', 'GAGA', 7654321, "Todo los animales");
+
+update veterinarios 
+set especialidad = "gatologo"
+where matricula = 7654321;
+
+-- Update registro
+
+-- INSERT INTO historial_clinico (id_mascota, id_veterinario, descripcion) 
+-- VALUES 
+--     (1, 1, 'Control anual de vacunación'),
+--     (2, 1, 'Chequeo por tos persistente'),
+--     (3, 2, 'Cirugía de esterilización');
+
+update historial_clinico
+set descripcion = "Limpieza de pulgas"
+where id = 2;
+
+-- Ejercicio 8
