@@ -59,10 +59,43 @@ VALUES
     -- fecha_nacimiento date,
     -- id_dueno int, 
     -- FOREIGN KEY (id_dueno) REFERENCES duenos(id)
-    
-    insert into mascotas () 
+INSERT INTO mascotas (nombre, especie, fecha_nacimiento, id_dueno)
+VALUES 
+    ('Chipi', 'salchica-random', '2024-12-09', 1),
+    ('Loconaso', 'PitBull', '2022-02-12', 2),
+    ('Furfru', 'Legendario', '2005-07-16', 3);
+
 
 --Veterinarios datos
+-- CREATE TABLE veterinarios (
+--     id int AUTO_INCREMENT PRIMARY KEY,
+--     nombre varchar(50) not null,
+--     apellido varchar(50) not null,
+--     matricula varchar(20) unique not null,
+--     especialidad varchar(50) not null
+-- );
+
+
+INSERT INTO veterinarios (nombre, apellido, matricula, especialidad)
+VALUES 
+    ('Lucas', 'Martinez', 123456 , "Gatologo" ),
+    ('Natalia', 'Bargas', 1234567, "Perrologo"),
+    ('GUGU', 'GAGA', 7654321, "Todo los animales");
 
 
 --Historial clinico
+
+
+-- CREATE TABLE historial_clinico (
+--     id int AUTO_INCREMENT PRIMARY KEY,
+--     id_mascota int not null,
+--     id_veterinario int not null,
+--     fecha_registro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--     FOREIGN KEY (id_mascota) REFERENCES mascotas(id),
+--     FOREIGN KEY (id_veterinario) REFERENCES veterinarios(id)
+-- );
+
+INSERT INTO historial_clinico (id_mascota, id_veterinario) 
+VALUES (1, 1), 
+       (2, 1),
+       (3, 2);
