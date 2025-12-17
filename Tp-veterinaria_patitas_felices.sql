@@ -126,10 +126,10 @@ VALUES
 
 INSERT INTO historial_clinico (id_mascota, id_veterinario, descripcion)
 VALUES 
-(2, 4, 'Vacunación anual'),
-(3, 5, 'Chequeo general'),
-(4, 6, 'Tratamiento antipulgas'),
-(5, 7, 'Revisión postoperatoria');
+(4, 4, 'Vacunación anual'),
+(5, 5, 'Chequeo general'),
+(6, 6, 'Tratamiento antipulgas'),
+(7, 7, 'Revisión postoperatoria');
 
 
 -- Ejercicio 9
@@ -140,3 +140,19 @@ SELECT
     CONCAT(d.nombre, ' ', d.apellido) AS nombre_completo_dueno
 FROM mascotas m
 JOIN duenos d ON m.id_dueno = d.id;
+
+
+-- Ejercicio 10
+
+SELECT 
+    m.nombre AS nombre_mascota,
+    m.especie,
+    CONCAT(d.nombre, ' ', d.apellido) AS nombre_completo_dueno,
+    CONCAT(v.nombre, ' ', v.apellido) AS nombre_completo_veterinario,
+    h.fecha_registro,
+    h.descripcion
+FROM historial_clinico h
+JOIN mascotas m ON h.id_mascota = m.id
+JOIN duenos d ON m.id_dueno = d.id
+JOIN veterinarios v ON h.id_veterinario = v.id
+ORDER BY h.fecha_registro DESC;
