@@ -1,3 +1,4 @@
+-- Ejercicio 7
 -- Update dueños
 UPDATE duenos 
 SET direccion = '13 de diciembre 1820'
