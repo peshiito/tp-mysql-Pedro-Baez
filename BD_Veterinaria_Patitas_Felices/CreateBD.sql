@@ -1,3 +1,4 @@
+-- Ejercicio 1
 CREATE DATABASE IF NOT EXISTS Veterinaria_patitas_felices;
 USE Veterinaria_patitas_felices;
 
